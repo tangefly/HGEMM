@@ -7,7 +7,7 @@
 #define CHECK_FP16(x) TORCH_CHECK(x.scalar_type() == torch::kFloat16, #x " must be FP16")
 #define CHECK_CONTIGUOUS(x) TORCH_CHECK(x.is_contiguous(), #x " must be contiguous")
 
-__global__ void hierarchical_tiling_hgemm_kernel(
+__global__ void naive_hgemm_kernel(
     const half* __restrict__ A,
     const half* __restrict__ B,
     half* __restrict__ C,
@@ -27,7 +27,7 @@ __global__ void hierarchical_tiling_hgemm_kernel(
     }
 }
 
-torch::Tensor hierarchical_tiling_hgemm(torch::Tensor A, torch::Tensor B) {
+torch::Tensor naive_hgemm(torch::Tensor A, torch::Tensor B) {
     CHECK_CUDA(A);
     CHECK_CUDA(B);
     CHECK_FP16(A);
@@ -53,7 +53,7 @@ torch::Tensor hierarchical_tiling_hgemm(torch::Tensor A, torch::Tensor B) {
         (M + block.y - 1) / block.y
     );
 
-    hierarchical_tiling_hgemm_kernel<<<grid, block>>>(
+    naive_hgemm_kernel<<<grid, block>>>(
         A_ptr, B_ptr, C_ptr,
         M, K, N
     );

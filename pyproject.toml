@@ -5,3 +5,11 @@ requires = [
     "torch",
 ]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "hgemm_ext"
+version = "0.1.0"
+dependencies = [
+    "torch",
+    "matplotlib",
+]

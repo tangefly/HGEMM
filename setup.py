@@ -9,6 +9,7 @@ setup(
             sources=[
                 "csrc/bindings.cpp",
                 "csrc/kernels/hgemm.cu",
+                "csrc/kernels/naive_hgemm.cu",
                 "csrc/kernels/hierarchical_tiling_hgemm.cu",
             ],
             extra_compile_args={
@@ -21,4 +22,5 @@ setup(
         )
     ],
     cmdclass={"build_ext": BuildExtension},
+    packages=["hgemm_ext"],
 )
