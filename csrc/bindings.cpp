@@ -3,6 +3,7 @@
 #include "ops/hgemm.h"
 #include "ops/naive_hgemm.h"
 #include "ops/hierarchical_tiling_hgemm.h"
+#include "ops/thread_tile_hgemm.h"
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.def(
@@ -21,5 +22,11 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
         "hierarchical_tiling_hgemm",
         &hierarchical_tiling_hgemm,
         "Hierarchical tiling HGEMM (manual)"
+    );
+
+    m.def(
+        "thread_tile_hgemm",
+        &thread_tile_hgemm,
+        "Thread Tile HGEMM (manual)"
     );
 }

@@ -20,16 +20,15 @@ pytest -v
 
 ```
 mkdir -p results
-# full
 ncu \
   --set full \
   --kernel-name naive_hgemm_kernel \
   -o ./results/naive_hgemm_kernel_profile \
   python ./profiles/naive_hgemm_profile.py
 
-# roofline
 ncu \
-  --kernel-name naive_hgemm_kernel \
-  --section SpeedOfLight_HierarchicalHalfRooflineChart \
-  -o ./results/naive_hgemm_kernel_roofline
+  --set full \
+  --kernel-name hierarchical_tiling_hgemm_kernel \
+  -o ./results/hierarchical_tiling_hgemm_kernel_profile \
+  python ./profiles/hierarchical_tiling_hgemm_profile.py
 ```
