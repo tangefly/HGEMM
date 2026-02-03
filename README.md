@@ -20,12 +20,16 @@ pytest -v
 
 ```
 mkdir -p results
+# full
 ncu \
   --set full \
   --kernel-name naive_hgemm_kernel \
   -o ./results/naive_hgemm_kernel_profile \
   python ./profiles/naive_hgemm_profile.py
-```
 
-/Applications/NVIDIA\ Nsight\ Compute.app/Contents/MacOS/ncu-ui \
-  naive_hgemm_kernel_profile.ncu-rep
+# roofline
+ncu \
+  --kernel-name naive_hgemm_kernel \
+  --section SpeedOfLight_HierarchicalHalfRooflineChart \
+  -o ./results/naive_hgemm_kernel_roofline
+```
