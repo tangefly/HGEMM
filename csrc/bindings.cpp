@@ -5,6 +5,7 @@
 #include "ops/hierarchical_tiling_hgemm.h"
 #include "ops/thread_tile_hgemm.h"
 #include "ops/warp_hgemm.h"
+#include "ops/float4_hgemm.h"
 
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     m.def(
@@ -35,5 +36,11 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
         "warp_hgemm",
         &warp_hgemm,
         "Warp HGEMM (manual)"
+    );
+
+    m.def(
+        "float4_hgemm",
+        &float4_hgemm,
+        "Float4 HGEMM (manual)"
     );
 }

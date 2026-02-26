@@ -15,3 +15,6 @@ def thread_tile_hgemm(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
 
 def warp_hgemm(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
     return _C.warp_hgemm(a, b)
+
+def float4_hgemm(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
+    return _C.float4_hgemm(a, b)

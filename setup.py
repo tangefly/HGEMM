@@ -12,7 +12,8 @@ setup(
                 "csrc/kernels/naive_hgemm.cu",
                 "csrc/kernels/hierarchical_tiling_hgemm.cu",
                 "csrc/kernels/thread_tile_hgemm.cu",
-                "csrc/kernels/warp_hgemm.cu"
+                "csrc/kernels/warp_hgemm.cu",
+                "csrc/kernels/float4_hgemm.cu"
             ],
             extra_compile_args={
                 "cxx": ["-O3"],
